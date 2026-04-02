@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Circuit Classifier Demo</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero">
+        <p class="eyebrow">Circuit Classifier</p>
+        <h1>Upload a clean fixture-style logic schematic.</h1>
+        <p class="lede">
+          The current demo supports the fixture-style pipeline for
+          <strong>{{ ", ".join(supported_circuits) }}</strong>.
+          Symbol-style schematics are still experimental.
+        </p>
+      </section>
+
+      <section class="panel upload-panel">
+        <form action="/analyze" method="post" enctype="multipart/form-data" class="upload-form">
+          <label class="file-input">
+            <span>Choose schematic image</span>
+            <input type="file" name="image" accept=".png,.jpg,.jpeg,.webp,.avif,.gif" required />
+          </label>
+          <button type="submit">Analyze</button>
+        </form>
+        <p class="hint">
+          Try one of the generated fixtures from <code>examples/schematics/</code>.
+        </p>
+      </section>
+
+      <section class="panel samples-panel">
+        <div class="samples-header">
+          <div>
+            <h2>Try a Built-In Sample</h2>
+            <p class="hint">Use a known-good fixture without uploading anything.</p>
+          </div>
+        </div>
+        <div class="sample-grid">
+          {% for sample in sample_fixtures %}
+          <article class="sample-card">
+            <img src="{{ sample.image_url }}" alt="{{ sample.label }} sample" />
+            <div class="sample-body">
+              <h3>{{ sample.label }}</h3>
+              <p>{{ sample.description }}</p>
+              <form action="/analyze/sample" method="post">
+                <input type="hidden" name="sample" value="{{ sample.slug }}" />
+                <button type="submit">Analyze Sample</button>
+              </form>
+            </div>
+          </article>
+          {% endfor %}
+        </div>
+      </section>
+
+      {% if error %}
+      <section class="panel error-panel">
+        <h2>Analysis Failed</h2>
+        <p>{{ error }}</p>
+      </section>
+      {% endif %}
+
+      {% if result %}
+      <section class="results-grid">
+        <section class="panel summary-panel">
+          <h2>Classification</h2>
+          <p class="meta">Source: <code>{{ result.filename }}</code></p>
+          <p class="label">{{ result.classification.label }}</p>
+          <p class="meta">Confidence: {{ "%.3f"|format(result.classification.confidence) }}</p>
+          <p class="reasoning">{{ result.classification.reasoning }}</p>
+
+          {% if result.warnings %}
+          <h3>Warnings</h3>
+          <ul class="plain-list">
+            {% for warning in result.warnings %}
+            <li>{{ warning }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+
+          {% if result.expressions %}
+          <h3>Output Expressions</h3>
+          <ul class="plain-list">
+            {% for output_name, expression in result.expressions.items() %}
+            <li><code>{{ output_name }}</code>: <code>{{ expression }}</code></li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </section>
+
+        <section class="panel detections-panel">
+          <h2>Detected Gates</h2>
+          <ul class="plain-list">
+            {% for gate in result.gates %}
+            <li>
+              <code>{{ gate.gate_id }}</code>
+              <strong>{{ gate.gate_type }}</strong>
+              {{ "%.2f"|format(gate.confidence) }}
+            </li>
+            {% endfor %}
+          </ul>
+        </section>
+      </section>
+
+      <section class="results-grid visuals-grid">
+        <section class="panel image-panel">
+          <h2>Overlay</h2>
+          <img src="{{ result.analysis_image_url }}" alt="Analysis overlay" />
+        </section>
+        <section class="panel image-panel">
+          <h2>Debug View</h2>
+          <img src="{{ result.debug_image_url }}" alt="Debug visualization" />
+        </section>
+      </section>
+
+      {% if result.truth_table %}
+      <section class="panel table-panel">
+        <h2>Truth Table</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                {% for key in result.truth_table[0].keys() %}
+                <th>{{ key }}</th>
+                {% endfor %}
+              </tr>
+            </thead>
+            <tbody>
+              {% for row in result.truth_table %}
+              <tr>
+                {% for value in row.values() %}
+                <td>{{ value }}</td>
+                {% endfor %}
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </section>
+      {% endif %}
+      {% endif %}
+    </main>
+  </body>
+</html>

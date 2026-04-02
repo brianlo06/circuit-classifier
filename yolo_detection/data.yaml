@@ -1,0 +1,19 @@
+# YOLOv8 Dataset Configuration for Circuit Component Detection
+# Usage: yolo detect train data=data.yaml model=yolov8n.pt epochs=100
+
+path: datasets/circuit_components  # dataset root dir
+train: images/train  # train images (relative to 'path')
+val: images/val      # val images (relative to 'path')
+
+# Classes - same as our classifier
+names:
+  0: AND
+  1: NAND
+  2: NOR
+  3: NOT
+  4: OR
+  5: XNOR
+  6: XOR
+
+# Number of classes
+nc: 7
