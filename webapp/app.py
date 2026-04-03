@@ -10,7 +10,7 @@ from pathlib import Path
 from typing import Any, Dict, List
 
 from fastapi import FastAPI, File, Request, UploadFile
-from fastapi.responses import HTMLResponse, JSONResponse
+from fastapi.responses import HTMLResponse, JSONResponse, Response
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
@@ -126,12 +126,17 @@ def _run_analysis(upload_path: Path) -> Dict[str, Any]:
 
 @app.get("/", response_class=HTMLResponse)
 async def index(request: Request) -> HTMLResponse:
-    return templates.TemplateResponse("index.html", _empty_context(request))
+    return templates.TemplateResponse(request, "index.html", _empty_context(request))
 
 
 @app.get("/health", response_class=JSONResponse)
 async def health() -> JSONResponse:
     return JSONResponse({"ok": True, "model_path": str(pipeline.model_path)})
+
+
+@app.get("/favicon.ico")
+async def favicon() -> Response:
+    return Response(status_code=204)
 
 
 @app.post("/analyze/sample", response_class=HTMLResponse)
@@ -142,14 +147,14 @@ async def analyze_sample(request: Request) -> HTMLResponse:
     sample = next((item for item in SAMPLE_FIXTURES if item["slug"] == sample_slug), None)
     if sample is None:
         context["error"] = f"Unknown sample fixture: {sample_slug or 'missing'}"
-        return templates.TemplateResponse("index.html", context, status_code=400)
+        return templates.TemplateResponse(request, "index.html", context, status_code=400)
 
     try:
         context.update(_run_analysis(sample["path"]))
-        return templates.TemplateResponse("index.html", context)
+        return templates.TemplateResponse(request, "index.html", context)
     except Exception as exc:
         context["error"] = str(exc)
-        return templates.TemplateResponse("index.html", context, status_code=500)
+        return templates.TemplateResponse(request, "index.html", context, status_code=500)
 
 
 @app.post("/analyze", response_class=HTMLResponse)
@@ -157,12 +162,12 @@ async def analyze(request: Request, image: UploadFile = File(...)) -> HTMLRespon
     context = _empty_context(request)
     if not image.filename:
         context["error"] = "No file was provided."
-        return templates.TemplateResponse("index.html", context, status_code=400)
+        return templates.TemplateResponse(request, "index.html", context, status_code=400)
 
     suffix = Path(image.filename).suffix.lower()
     if suffix not in SUPPORTED_SUFFIXES:
         context["error"] = f"Unsupported file type: {suffix or 'unknown'}"
-        return templates.TemplateResponse("index.html", context, status_code=400)
+        return templates.TemplateResponse(request, "index.html", context, status_code=400)
 
     TMP_DIR.mkdir(parents=True, exist_ok=True)
     upload_path = TMP_DIR / _normalize_filename(image.filename)
@@ -171,10 +176,10 @@ async def analyze(request: Request, image: UploadFile = File(...)) -> HTMLRespon
         with upload_path.open("wb") as output:
             shutil.copyfileobj(image.file, output)
         context.update(_run_analysis(upload_path))
-        return templates.TemplateResponse("index.html", context)
+        return templates.TemplateResponse(request, "index.html", context)
     except Exception as exc:
         context["error"] = str(exc)
-        return templates.TemplateResponse("index.html", context, status_code=500)
+        return templates.TemplateResponse(request, "index.html", context, status_code=500)
     finally:
         image.file.close()
         upload_path.unlink(missing_ok=True)

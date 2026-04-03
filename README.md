@@ -63,6 +63,23 @@ The app supports:
 - debug visualization
 - truth-table display when available
 
+## Deployment Prep
+
+The repo includes a simple `Procfile` for lightweight hosting platforms:
+
+```text
+web: python3 -m uvicorn webapp.app:app --host 0.0.0.0 --port ${PORT:-8000}
+```
+
+That means the project is already set up for basic platform-style deployment later.
+
+If you want to deploy it, the minimum runtime expectation is:
+- Python 3.9+
+- enough disk space for `models/fixture_demo_best.pt`
+- enough memory/CPU for local inference
+
+The current app should still be treated as a demo deployment, not a production service.
+
 ## Example Inputs
 
 Generated fixture schematics live in:

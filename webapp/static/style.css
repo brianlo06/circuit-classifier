@@ -213,6 +213,13 @@ th {
   border-color: #d28b7d;
 }
 
+.footer-note {
+  margin-top: 24px;
+  padding: 0 6px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
 @media (max-width: 900px) {
   .results-grid {
     grid-template-columns: 1fr;
