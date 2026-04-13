@@ -27,7 +27,16 @@ audit/
 quarantine/
 
 # Raw data and generated training corpora are not needed for the public demo repo
-data/
+# Exception: include the 6 supported symbol-beta benchmark images
+data/*
+!data/real_schematics/
+data/real_schematics/*
+!data/real_schematics/half_adder_vlabs.png
+!data/real_schematics/half_adder_gfg.jpg
+!data/real_schematics/half_adder_tp.jpg
+!data/real_schematics/full_adder_using_half_adders.jpg
+!data/real_schematics/full_adder_tp.jpg
+!data/real_schematics/decoder_2x4_asic.png
 yolo_detection/datasets/
 yolo_detection/runs/
 yolo_detection/*.pt
