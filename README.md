@@ -4,6 +4,12 @@ Circuit Classifier is a computer-vision and topology-analysis project for recogn
 
 The current version is a working local demo for **clean fixture-style schematics** plus an experimental **symbol-style beta** path for clean real gate drawings.
 
+## Authorship
+
+I built this project end to end and used AI coding tools as accelerators for implementation, iteration, and debugging.
+
+I owned the architecture, benchmark design, product scope, regression checks, and final technical decisions. AI helped speed up coding and exploration, but I was responsible for validating results, fixing failures, and deciding what counted as release-ready behavior.
+
 ## Current Demo Scope
 
 Supported in the current demo:
