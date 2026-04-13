@@ -1,0 +1,98 @@
+[
+  {
+    "id": "schematic_00000_gate_0",
+    "image": "yolo_detection/datasets/complex_circuits_v8_with_fixtures/images/train/schematic_00000.png",
+    "label": "AND",
+    "bbox": [68.0, 167.0, 205.0, 270.0]
+  },
+  {
+    "id": "schematic_00000_gate_1",
+    "image": "yolo_detection/datasets/complex_circuits_v8_with_fixtures/images/train/schematic_00000.png",
+    "label": "NOT",
+    "bbox": [68.0, 322.0, 204.0, 420.0]
+  },
+  {
+    "id": "schematic_00000_gate_2",
+    "image": "yolo_detection/datasets/complex_circuits_v8_with_fixtures/images/train/schematic_00000.png",
+    "label": "OR",
+    "bbox": [998.0, 234.0, 1142.0, 335.0]
+  },
+  {
+    "id": "schematic_00001_gate_0",
+    "image": "yolo_detection/datasets/complex_circuits_v8_with_fixtures/images/train/schematic_00001.png",
+    "label": "NOT",
+    "bbox": [66.0, 410.0, 207.0, 509.0]
+  },
+  {
+    "id": "schematic_00001_gate_1",
+    "image": "yolo_detection/datasets/complex_circuits_v8_with_fixtures/images/train/schematic_00001.png",
+    "label": "XNOR",
+    "bbox": [68.0, 199.0, 205.0, 303.0]
+  },
+  {
+    "id": "schematic_00001_gate_2",
+    "image": "yolo_detection/datasets/complex_circuits_v8_with_fixtures/images/train/schematic_00001.png",
+    "label": "XNOR",
+    "bbox": [607.0, 312.0, 744.0, 414.0]
+  },
+  {
+    "id": "schematic_00001_gate_3",
+    "image": "yolo_detection/datasets/complex_circuits_v8_with_fixtures/images/train/schematic_00001.png",
+    "label": "AND",
+    "bbox": [1138.0, 311.0, 1280.0, 411.0]
+  },
+  {
+    "id": "schematic_00002_gate_0",
+    "image": "yolo_detection/datasets/complex_circuits_v8_with_fixtures/images/train/schematic_00002.png",
+    "label": "NOR",
+    "bbox": [60.0, 157.0, 198.0, 258.0]
+  },
+  {
+    "id": "schematic_00002_gate_1",
+    "image": "yolo_detection/datasets/complex_circuits_v8_with_fixtures/images/train/schematic_00002.png",
+    "label": "NAND",
+    "bbox": [61.0, 285.0, 198.0, 389.0]
+  },
+  {
+    "id": "schematic_00002_gate_2",
+    "image": "yolo_detection/datasets/complex_circuits_v8_with_fixtures/images/train/schematic_00002.png",
+    "label": "AND",
+    "bbox": [968.0, 218.0, 1106.0, 320.0]
+  },
+  {
+    "id": "schematic_00003_gate_0",
+    "image": "yolo_detection/datasets/complex_circuits_v8_with_fixtures/images/train/schematic_00003.png",
+    "label": "AND",
+    "bbox": [71.0, 231.0, 215.0, 330.0]
+  },
+  {
+    "id": "schematic_00003_gate_1",
+    "image": "yolo_detection/datasets/complex_circuits_v8_with_fixtures/images/train/schematic_00003.png",
+    "label": "NAND",
+    "bbox": [908.0, 233.0, 1044.0, 337.0]
+  },
+  {
+    "id": "schematic_00266_gate_0",
+    "image": "yolo_detection/datasets/complex_circuits_v8_with_fixtures/images/val/schematic_00266.png",
+    "label": "OR",
+    "bbox": [83.0, 141.0, 225.0, 244.0]
+  },
+  {
+    "id": "schematic_00266_gate_1",
+    "image": "yolo_detection/datasets/complex_circuits_v8_with_fixtures/images/val/schematic_00266.png",
+    "label": "XOR",
+    "bbox": [83.0, 393.0, 225.0, 492.0]
+  },
+  {
+    "id": "schematic_00266_gate_2",
+    "image": "yolo_detection/datasets/complex_circuits_v8_with_fixtures/images/val/schematic_00266.png",
+    "label": "NOR",
+    "bbox": [86.0, 279.0, 223.0, 381.0]
+  },
+  {
+    "id": "schematic_00266_gate_3",
+    "image": "yolo_detection/datasets/complex_circuits_v8_with_fixtures/images/val/schematic_00266.png",
+    "label": "OR",
+    "bbox": [825.0, 278.0, 962.0, 376.0]
+  }
+]

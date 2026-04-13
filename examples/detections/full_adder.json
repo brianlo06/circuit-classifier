@@ -1,0 +1,57 @@
+[
+  {
+    "gate_id": "xor1",
+    "gate_type": "XOR",
+    "bbox": [
+      220,
+      40,
+      360,
+      140
+    ],
+    "confidence": 0.99
+  },
+  {
+    "gate_id": "and1",
+    "gate_type": "AND",
+    "bbox": [
+      220,
+      240,
+      360,
+      340
+    ],
+    "confidence": 0.99
+  },
+  {
+    "gate_id": "xor2",
+    "gate_type": "XOR",
+    "bbox": [
+      620,
+      40,
+      760,
+      140
+    ],
+    "confidence": 0.99
+  },
+  {
+    "gate_id": "and2",
+    "gate_type": "AND",
+    "bbox": [
+      620,
+      240,
+      760,
+      340
+    ],
+    "confidence": 0.99
+  },
+  {
+    "gate_id": "or1",
+    "gate_type": "OR",
+    "bbox": [
+      900,
+      140,
+      1040,
+      240
+    ],
+    "confidence": 0.99
+  }
+]

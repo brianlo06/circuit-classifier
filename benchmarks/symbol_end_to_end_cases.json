@@ -1,0 +1,143 @@
+[
+  {
+    "image": "data/real_schematics/half_adder_vlabs.png",
+    "expected": "half_adder",
+    "gate_counts": [2],
+    "proposal_limit": 6,
+    "label_top_k": 2,
+    "status": "supported"
+  },
+  {
+    "image": "data/real_schematics/half_adder_gfg.jpg",
+    "expected": "half_adder",
+    "gate_counts": [2],
+    "proposal_limit": 6,
+    "label_top_k": 2,
+    "status": "supported"
+  },
+  {
+    "image": "data/real_schematics/half_adder_tp.jpg",
+    "expected": "half_adder",
+    "gate_counts": [2],
+    "proposal_limit": 6,
+    "label_top_k": 2,
+    "status": "supported"
+  },
+  {
+    "image": "data/real_schematics/full_adder_using_half_adders.jpg",
+    "expected": "full_adder",
+    "gate_counts": [5],
+    "proposal_limit": 6,
+    "label_top_k": 3,
+    "topology_bbox_expand_ratio": 0.0,
+    "status": "supported"
+  },
+  {
+    "image": "data/real_schematics/full_adder_tp.jpg",
+    "expected": "full_adder",
+    "gate_counts": [5],
+    "proposal_limit": 15,
+    "label_top_k": 3,
+    "topology_bbox_expand_ratio": 0.1,
+    "status": "supported"
+  },
+  {
+    "image": "data/real_schematics/full_adder_vlabs.png",
+    "expected": "unknown",
+    "gate_counts": [5],
+    "proposal_limit": 15,
+    "label_top_k": 3,
+    "topology_bbox_expand_ratio": 0.1,
+    "status": "candidate"
+  },
+  {
+    "image": "data/real_schematics/xnor_ansi.png",
+    "expected": "unknown",
+    "gate_counts": [2],
+    "proposal_limit": 6,
+    "label_top_k": 3,
+    "topology_bbox_expand_ratio": 0.1,
+    "status": "candidate"
+  },
+  {
+    "image": "data/real_schematics/xnor_symbol_tp.jpg",
+    "expected": "unknown",
+    "gate_counts": [2],
+    "proposal_limit": 6,
+    "label_top_k": 3,
+    "topology_bbox_expand_ratio": 0.1,
+    "status": "candidate"
+  },
+  {
+    "image": "data/real_schematics/decoder_2x4_asic.png",
+    "expected": "decoder_2to4",
+    "gate_counts": [6],
+    "proposal_limit": 6,
+    "label_top_k": 3,
+    "topology_bbox_expand_ratio": 0.1,
+    "status": "supported"
+  },
+  {
+    "image": "data/real_schematics/decoder_3x8_asic.png",
+    "expected": "unknown",
+    "gate_counts": [6],
+    "proposal_limit": 6,
+    "label_top_k": 3,
+    "topology_bbox_expand_ratio": 0.1,
+    "status": "candidate"
+  },
+  {
+    "image": "data/real_schematics/xor_basic_gates.png",
+    "expected": "unknown",
+    "gate_counts": [5],
+    "proposal_limit": 6,
+    "label_top_k": 3,
+    "topology_bbox_expand_ratio": 0.1,
+    "status": "candidate"
+  },
+  {
+    "image": "data/real_schematics/xor_nand_gates.png",
+    "expected": "unknown",
+    "gate_counts": [5],
+    "proposal_limit": 6,
+    "label_top_k": 3,
+    "topology_bbox_expand_ratio": 0.1,
+    "status": "candidate"
+  },
+  {
+    "image": "data/real_schematics/xor_nor_gates.png",
+    "expected": "unknown",
+    "gate_counts": [5],
+    "proposal_limit": 6,
+    "label_top_k": 3,
+    "topology_bbox_expand_ratio": 0.1,
+    "status": "candidate"
+  },
+  {
+    "image": "data/real_schematics/xnor_nand_gates_gfg.png",
+    "expected": "unknown",
+    "gate_counts": [5],
+    "proposal_limit": 6,
+    "label_top_k": 3,
+    "topology_bbox_expand_ratio": 0.1,
+    "status": "candidate"
+  },
+  {
+    "image": "data/real_schematics/xnor_nor_gates_gfg.png",
+    "expected": "unknown",
+    "gate_counts": [5],
+    "proposal_limit": 6,
+    "label_top_k": 3,
+    "topology_bbox_expand_ratio": 0.1,
+    "status": "candidate"
+  },
+  {
+    "image": "data/real_schematics/xnor_basic_gates_gfg.png",
+    "expected": "unknown",
+    "gate_counts": [5],
+    "proposal_limit": 6,
+    "label_top_k": 3,
+    "topology_bbox_expand_ratio": 0.1,
+    "status": "candidate"
+  }
+]

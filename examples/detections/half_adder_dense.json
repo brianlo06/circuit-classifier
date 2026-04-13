@@ -1,0 +1,24 @@
+[
+  {
+    "gate_id": "xor1",
+    "gate_type": "XOR",
+    "bbox": [
+      250,
+      70,
+      390,
+      170
+    ],
+    "confidence": 0.99
+  },
+  {
+    "gate_id": "and1",
+    "gate_type": "AND",
+    "bbox": [
+      250,
+      200,
+      390,
+      300
+    ],
+    "confidence": 0.99
+  }
+]

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Circuit Classifier Demo</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero">
+        <p class="eyebrow">Circuit Classifier</p>
+        <h1>Analyze clean logic schematics in stable and beta modes.</h1>
+        <p class="lede">
+          The stable demo supports the fixture-style pipeline for
+          <strong>{{ ", ".join(supported_circuits) }}</strong>.
+          A separate symbol-style beta path is now exposed for clean real gate drawings, but it is still experimental.
+        </p>
+      </section>
+
+      <section class="panel upload-panel">
+        <form action="/analyze" method="post" enctype="multipart/form-data" class="upload-form">
+          <label class="file-input">
+            <span>Choose schematic image</span>
+            <input type="file" name="image" accept=".png,.jpg,.jpeg,.webp,.avif,.gif" required />
+          </label>
+          <label class="mode-input">
+            <span>Analysis mode</span>
+            <select name="mode">
+              {% for mode in analysis_modes %}
+              <option value="{{ mode.value }}" {% if selected_mode == mode.value %}selected{% endif %}>
+                {{ mode.label }}
+              </option>
+              {% endfor %}
+            </select>
+          </label>
+          <button type="submit">Analyze</button>
+        </form>
+        <p class="hint">
+          `Fixture Demo` is the stable shipped path. `Symbol Beta` is intended for clean symbol-style gate drawings and still has a narrower success envelope.
+        </p>
+        <div class="status-grid">
+          <article class="status-card stable">
+            <p class="status-kicker">{{ mode_copy["fixture"]["status"] }}</p>
+            <h3>Fixture Demo</h3>
+            <p>{{ mode_copy["fixture"]["summary"] }}</p>
+            <ul class="plain-list compact-list">
+              {% for tip in mode_copy["fixture"]["tips"] %}
+              <li>{{ tip }}</li>
+              {% endfor %}
+            </ul>
+          </article>
+          <article class="status-card beta">
+            <p class="status-kicker">{{ mode_copy["symbol_beta"]["status"] }}</p>
+            <h3>Symbol Beta</h3>
+            <p>{{ mode_copy["symbol_beta"]["summary"] }}</p>
+            <ul class="plain-list compact-list">
+              {% for tip in mode_copy["symbol_beta"]["tips"] %}
+              <li>{{ tip }}</li>
+              {% endfor %}
+            </ul>
+          </article>
+        </div>
+        <div class="mode-grid">
+          {% for mode in analysis_modes %}
+          <article class="mode-card {% if selected_mode == mode.value %}selected{% endif %}">
+            <h3>{{ mode.label }}</h3>
+            <p>{{ mode.description }}</p>
+          </article>
+          {% endfor %}
+        </div>
+      </section>
+
+      <section class="panel samples-panel">
+        <div class="samples-header">
+          <div>
+            <h2>Try Fixture Samples</h2>
+            <p class="hint">Use a known-good fixture without uploading anything.</p>
+          </div>
+        </div>
+        <div class="sample-grid">
+          {% for sample in sample_fixtures %}
+          <article class="sample-card">
+            <img src="{{ sample.image_url }}" alt="{{ sample.label }} sample" />
+            <div class="sample-body">
+              <h3>{{ sample.label }}</h3>
+              <p>{{ sample.description }}</p>
+              <form action="/analyze/sample" method="post">
+                <input type="hidden" name="sample" value="{{ sample.slug }}" />
+                <input type="hidden" name="mode" value="fixture" />
+                <button type="submit">Analyze Sample</button>
+              </form>
+            </div>
+          </article>
+          {% endfor %}
+        </div>
+      </section>
+
+      <section class="panel samples-panel">
+        <div class="samples-header">
+          <div>
+            <h2>Try Supported Symbol Beta Cases</h2>
+            <p class="hint">These are the current promoted real symbol-style examples behind the beta path.</p>
+          </div>
+        </div>
+        <div class="sample-grid">
+          {% for sample in sample_symbols %}
+          <article class="sample-card symbol-card">
+            <img src="{{ sample.image_url }}" alt="{{ sample.label }} symbol sample" />
+            <div class="sample-body">
+              <h3>{{ sample.label }}</h3>
+              <p>{{ sample.description }}</p>
+              <form action="/analyze/sample" method="post">
+                <input type="hidden" name="sample" value="{{ sample.slug }}" />
+                <input type="hidden" name="mode" value="symbol_beta" />
+                <button type="submit">Analyze In Symbol Beta</button>
+              </form>
+            </div>
+          </article>
+          {% endfor %}
+        </div>
+      </section>
+
+      {% if error %}
+      <section class="panel error-panel">
+        <h2>Analysis Failed</h2>
+        <p>{{ error }}</p>
+      </section>
+      {% endif %}
+
+      {% if result %}
+      <section class="results-grid">
+        <section class="panel summary-panel">
+          <h2>Classification</h2>
+          <p class="meta">Source: <code>{{ result.filename }}</code></p>
+          <p class="meta">Mode: <code>{{ result.mode }}</code></p>
+          {% if result.mode == "symbol_beta" %}
+          <p class="beta-note">
+            Symbol Beta is limited to the current supported symbol-style benchmark envelope. Unknown results should be treated as unsupported, not definitive failures of the uploaded circuit.
+          </p>
+          {% endif %}
+          <p class="label">{{ result.classification.label }}</p>
+          <p class="meta">Confidence: {{ "%.3f"|format(result.classification.confidence) }}</p>
+          <p class="reasoning">{{ result.classification.reasoning }}</p>
+
+          {% if result.warnings %}
+          <h3>Warnings</h3>
+          <ul class="plain-list">
+            {% for warning in result.warnings %}
+            <li>{{ warning }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+
+          {% if result.expressions %}
+          <h3>Output Expressions</h3>
+          <ul class="plain-list">
+            {% for output_name, expression in result.expressions.items() %}
+            <li><code>{{ output_name }}</code>: <code>{{ expression }}</code></li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </section>
+
+        <section class="panel detections-panel">
+          <h2>Detected Gates</h2>
+          {% if result.selected_gate_ids %}
+          <p class="meta">Selected proposal set: <code>{{ ", ".join(result.selected_gate_ids) }}</code></p>
+          {% endif %}
+          <ul class="plain-list">
+            {% for gate in result.gates %}
+            <li>
+              <code>{{ gate.gate_id }}</code>
+              <strong>{{ gate.gate_type }}</strong>
+              {{ "%.2f"|format(gate.confidence) }}
+            </li>
+            {% endfor %}
+          </ul>
+        </section>
+      </section>
+
+      <section class="results-grid visuals-grid">
+        <section class="panel image-panel">
+          <h2>Overlay</h2>
+          <img src="{{ result.analysis_image_url }}" alt="Analysis overlay" />
+        </section>
+        <section class="panel image-panel">
+          <h2>Debug View</h2>
+          <img src="{{ result.debug_image_url }}" alt="Debug visualization" />
+        </section>
+      </section>
+
+      {% if result.truth_table %}
+      <section class="panel table-panel">
+        <h2>Truth Table</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                {% for key in result.truth_table[0].keys() %}
+                <th>{{ key }}</th>
+                {% endfor %}
+              </tr>
+            </thead>
+            <tbody>
+              {% for row in result.truth_table %}
+              <tr>
+                {% for value in row.values() %}
+                <td>{{ value }}</td>
+                {% endfor %}
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </section>
+      {% endif %}
+      {% endif %}
+
+      <footer class="footer-note">
+        <p>
+          Stable scope: clean fixture-style schematics for
+          <strong>{{ ", ".join(supported_circuits) }}</strong>. Symbol-style beta mode is available for clean gate-drawing schematics, but it remains experimental and narrower in scope.
+        </p>
+      </footer>
+    </main>
+  </body>
+</html>

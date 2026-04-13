@@ -1,0 +1,37 @@
+.DS_Store
+__pycache__/
+*.pyc
+.tmp/
+.venv/
+.pytest_cache/
+import_report_*.txt
+
+# Large local experiment outputs
+checkpoints/
+checkpoints_384/
+checkpoints_384_fixed/
+checkpoints_384_v2/
+checkpoints_384_v3/
+checkpoints_diagnostic/
+checkpoints_diagnostic_latest/
+checkpoints_grouped/
+checkpoints_preprocess_smoke/
+checkpoints_smoke/
+crossval_resnet/
+crossval_resnet_or_xor_expanded/
+crossval_resnet_post_review/
+crossval_resnet_preprocessed/
+crossval_smoke/
+runs/
+audit/
+quarantine/
+
+# Raw data and generated training corpora are not needed for the public demo repo
+data/
+yolo_detection/datasets/
+yolo_detection/runs/
+yolo_detection/*.pt
+
+# Keep only the publishable stripped demo model
+models/*
+!models/fixture_demo_best.pt

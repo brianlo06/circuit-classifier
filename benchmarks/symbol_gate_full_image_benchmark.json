@@ -1,0 +1,16 @@
+[
+  {"image": "data/AND/AND1.webp", "label": "AND"},
+  {"image": "data/AND/AND10.avif", "label": "AND"},
+  {"image": "data/NAND/NAND1.png", "label": "NAND"},
+  {"image": "data/NAND/NAND10.webp", "label": "NAND"},
+  {"image": "data/NOR/NOR12.avif", "label": "NOR"},
+  {"image": "data/NOR/NOR14.jpg", "label": "NOR"},
+  {"image": "data/NOT/NOT10.webp", "label": "NOT"},
+  {"image": "data/NOT/NOT13.jpg", "label": "NOT"},
+  {"image": "data/OR/OR1.png", "label": "OR"},
+  {"image": "data/OR/OR16.jpg", "label": "OR"},
+  {"image": "data/XNOR/XNOR1.jpg", "label": "XNOR"},
+  {"image": "data/XNOR/XNOR11.webp", "label": "XNOR"},
+  {"image": "data/XOR/XOR1.jpg", "label": "XOR"},
+  {"image": "data/XOR/XOR42.png", "label": "XOR"}
+]

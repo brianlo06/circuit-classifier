@@ -1,0 +1,717 @@
+[
+  {
+    "id": "xor_basic_gates_gate_1",
+    "image": "data/real_schematics/xor_basic_gates.png",
+    "label": "NOT",
+    "bbox": [
+      195.5,
+      65.5,
+      338.5,
+      154.0
+    ],
+    "source": "electronicsphysics.com",
+    "notes": "G1 inverter in XOR implementation"
+  },
+  {
+    "id": "xor_basic_gates_gate_2",
+    "image": "data/real_schematics/xor_basic_gates.png",
+    "label": "NOT",
+    "bbox": [
+      209.2,
+      313.9,
+      354.3,
+      413.5
+    ],
+    "source": "electronicsphysics.com",
+    "notes": "G2 inverter in XOR implementation"
+  },
+  {
+    "id": "xor_basic_gates_gate_3",
+    "image": "data/real_schematics/xor_basic_gates.png",
+    "label": "AND",
+    "bbox": [
+      427.0,
+      109.0,
+      527.0,
+      205.0
+    ],
+    "source": "electronicsphysics.com",
+    "notes": "G3 AND gate in XOR implementation"
+  },
+  {
+    "id": "xor_basic_gates_gate_4",
+    "image": "data/real_schematics/xor_basic_gates.png",
+    "label": "AND",
+    "bbox": [
+      427.7,
+      311.7,
+      534.1,
+      419.3
+    ],
+    "source": "electronicsphysics.com",
+    "notes": "G4 AND gate in XOR implementation"
+  },
+  {
+    "id": "xor_basic_gates_gate_5",
+    "image": "data/real_schematics/xor_basic_gates.png",
+    "label": "OR",
+    "bbox": [
+      582.6,
+      216.4,
+      711.6,
+      365.0
+    ],
+    "source": "electronicsphysics.com",
+    "notes": "G5 OR gate in XOR implementation"
+  },
+  {
+    "id": "xor_nand_gates_gate_1",
+    "image": "data/real_schematics/xor_nand_gates.png",
+    "label": "NAND",
+    "bbox": [
+      226.81207275390625,
+      173.92926025390625,
+      382.00396728515625,
+      296.2690124511719
+    ],
+    "source": "electronicsphysics.com",
+    "notes": "Left NAND gate in XOR-via-NAND schematic"
+  },
+  {
+    "id": "xor_nand_gates_gate_2",
+    "image": "data/real_schematics/xor_nand_gates.png",
+    "label": "NAND",
+    "bbox": [
+      425.49566650390625,
+      61.117759704589844,
+      588.9791870117188,
+      196.01303100585938
+    ],
+    "source": "electronicsphysics.com",
+    "notes": "Upper middle NAND gate in XOR-via-NAND schematic"
+  },
+  {
+    "id": "xor_nand_gates_gate_3",
+    "image": "data/real_schematics/xor_nand_gates.png",
+    "label": "NAND",
+    "bbox": [
+      420.0,
+      290.0,
+      520.0,
+      385.0
+    ],
+    "source": "electronicsphysics.com",
+    "notes": "Lower middle NAND gate - bbox adjusted to capture bubble"
+  },
+  {
+    "id": "xor_nand_gates_gate_4",
+    "image": "data/real_schematics/xor_nand_gates.png",
+    "label": "NAND",
+    "bbox": [
+      642.164306640625,
+      175.24188232421875,
+      727.208740234375,
+      261.91668701171875
+    ],
+    "source": "electronicsphysics.com",
+    "notes": "Output NAND gate in XOR-via-NAND schematic"
+  },
+  {
+    "id": "xor_nor_gates_gate_1",
+    "image": "data/real_schematics/xor_nor_gates.png",
+    "label": "NOR",
+    "bbox": [
+      170.0,
+      185.0,
+      280.0,
+      260.0
+    ],
+    "source": "electronicsphysics.com",
+    "notes": "Left NOR gate - bbox tightened to exclude label clutter"
+  },
+  {
+    "id": "xor_nor_gates_gate_2",
+    "image": "data/real_schematics/xor_nor_gates.png",
+    "label": "NOR",
+    "bbox": [
+      309.111083984375,
+      40.361785888671875,
+      464.839111328125,
+      174.70205688476562
+    ],
+    "source": "electronicsphysics.com",
+    "notes": "Upper NOR gate in XOR-via-NOR schematic"
+  },
+  {
+    "id": "xor_nor_gates_gate_3",
+    "image": "data/real_schematics/xor_nor_gates.png",
+    "label": "NOR",
+    "bbox": [
+      284.62762451171875,
+      253.94686889648438,
+      461.33392333984375,
+      380.9333801269531
+    ],
+    "source": "electronicsphysics.com",
+    "notes": "Lower NOR gate in XOR-via-NOR schematic"
+  },
+  {
+    "id": "xor_nor_gates_gate_4",
+    "image": "data/real_schematics/xor_nor_gates.png",
+    "label": "NOR",
+    "bbox": [
+      455.82861328125,
+      133.510986328125,
+      632.7044677734375,
+      289.4658508300781
+    ],
+    "source": "electronicsphysics.com",
+    "notes": "Middle output-path NOR gate in XOR-via-NOR schematic"
+  },
+  {
+    "id": "xor_nor_gates_gate_5",
+    "image": "data/real_schematics/xor_nor_gates.png",
+    "label": "NOR",
+    "bbox": [
+      628.016845703125,
+      147.16848754882812,
+      803.2281494140625,
+      285.6125793457031
+    ],
+    "source": "electronicsphysics.com",
+    "notes": "Final NOR gate in XOR-via-NOR schematic"
+  },
+  {
+    "id": "xnor_nand_gates_gfg_gate_1",
+    "image": "data/real_schematics/xnor_nand_gates_gfg.png",
+    "label": "NAND",
+    "bbox": [
+      147.2681427001953,
+      142.0583953857422,
+      273.7007751464844,
+      222.27951049804688
+    ],
+    "source": "geeksforgeeks.org",
+    "notes": "Left NAND gate in XNOR-via-NAND schematic"
+  },
+  {
+    "id": "xnor_nand_gates_gfg_gate_2",
+    "image": "data/real_schematics/xnor_nand_gates_gfg.png",
+    "label": "NAND",
+    "bbox": [
+      380.0713195800781,
+      41.53809356689453,
+      469.8005676269531,
+      110.31935119628906
+    ],
+    "source": "geeksforgeeks.org",
+    "notes": "Upper middle NAND gate in XNOR-via-NAND schematic"
+  },
+  {
+    "id": "xnor_nand_gates_gfg_gate_3",
+    "image": "data/real_schematics/xnor_nand_gates_gfg.png",
+    "label": "NAND",
+    "bbox": [
+      376.3080139160156,
+      250.3253173828125,
+      469.5594787597656,
+      329.2118225097656
+    ],
+    "source": "geeksforgeeks.org",
+    "notes": "Lower middle NAND gate in XNOR-via-NAND schematic"
+  },
+  {
+    "id": "xnor_nand_gates_gfg_gate_4",
+    "image": "data/real_schematics/xnor_nand_gates_gfg.png",
+    "label": "NAND",
+    "bbox": [
+      529.3516235351562,
+      144.67457580566406,
+      620.9749145507812,
+      215.7215576171875
+    ],
+    "source": "geeksforgeeks.org",
+    "notes": "Center-right NAND gate in XNOR-via-NAND schematic"
+  },
+  {
+    "id": "xnor_nand_gates_gfg_gate_5",
+    "image": "data/real_schematics/xnor_nand_gates_gfg.png",
+    "label": "NAND",
+    "bbox": [
+      715.4971923828125,
+      142.31414794921875,
+      808.7786254882812,
+      212.2052001953125
+    ],
+    "source": "geeksforgeeks.org",
+    "notes": "Final NAND gate in XNOR-via-NAND schematic"
+  },
+  {
+    "id": "xnor_nor_gates_gfg_gate_1",
+    "image": "data/real_schematics/xnor_nor_gates_gfg.png",
+    "label": "NOR",
+    "bbox": [
+      258.6351013183594,
+      80.42364501953125,
+      351.7795104980469,
+      187.107666015625
+    ],
+    "source": "geeksforgeeks.org",
+    "notes": "Upper left NOR gate in XNOR-via-NOR schematic"
+  },
+  {
+    "id": "xnor_nor_gates_gfg_gate_2",
+    "image": "data/real_schematics/xnor_nor_gates_gfg.png",
+    "label": "NOR",
+    "bbox": [
+      264.44122314453125,
+      303.049560546875,
+      340.40863037109375,
+      378.4754638671875
+    ],
+    "source": "geeksforgeeks.org",
+    "notes": "Lower left NOR gate in XNOR-via-NOR schematic"
+  },
+  {
+    "id": "xnor_nor_gates_gfg_gate_3",
+    "image": "data/real_schematics/xnor_nor_gates_gfg.png",
+    "label": "NOR",
+    "bbox": [
+      541.30517578125,
+      107.48799133300781,
+      630.0543212890625,
+      170.0151824951172
+    ],
+    "source": "geeksforgeeks.org",
+    "notes": "Upper middle NOR gate in XNOR-via-NOR schematic"
+  },
+  {
+    "id": "xnor_nor_gates_gfg_gate_4",
+    "image": "data/real_schematics/xnor_nor_gates_gfg.png",
+    "label": "NOR",
+    "bbox": [
+      589.7136840820312,
+      260.6204528808594,
+      697.3160400390625,
+      355.4136657714844
+    ],
+    "source": "geeksforgeeks.org",
+    "notes": "Lower middle NOR gate in XNOR-via-NOR schematic"
+  },
+  {
+    "id": "xnor_nor_gates_gfg_gate_5",
+    "image": "data/real_schematics/xnor_nor_gates_gfg.png",
+    "label": "NOR",
+    "bbox": [
+      695.8281860351562,
+      111.7394790649414,
+      792.3822021484375,
+      202.72056579589844
+    ],
+    "source": "geeksforgeeks.org",
+    "notes": "Final NOR gate in XNOR-via-NOR schematic"
+  },
+  {
+    "id": "half_adder_vlabs_manual_gate_0",
+    "image": "data/real_schematics/half_adder_vlabs.png",
+    "label": "XOR",
+    "bbox": [
+      95.0,
+      0.0,
+      245.0,
+      72.0
+    ],
+    "source": "vlab.co.in",
+    "notes": "Manually verified XOR gate in half-adder schematic"
+  },
+  {
+    "id": "half_adder_vlabs_manual_and_gate_0",
+    "image": "data/real_schematics/half_adder_vlabs.png",
+    "label": "AND",
+    "bbox": [
+      145.0,
+      82.0,
+      255.0,
+      155.0
+    ],
+    "source": "vlab.co.in",
+    "notes": "Manually verified AND gate in half-adder schematic"
+  },
+  {
+    "id": "half_adder_gfg_manual_xor_gate_0",
+    "image": "data/real_schematics/half_adder_gfg.jpg",
+    "label": "XOR",
+    "bbox": [
+      108.0,
+      0.0,
+      238.0,
+      70.0
+    ],
+    "source": "geeksforgeeks.org",
+    "notes": "Manually verified XOR gate in half-adder schematic"
+  },
+  {
+    "id": "half_adder_gfg_manual_and_gate_0",
+    "image": "data/real_schematics/half_adder_gfg.jpg",
+    "label": "AND",
+    "bbox": [
+      120.0,
+      88.0,
+      252.0,
+      198.0
+    ],
+    "source": "geeksforgeeks.org",
+    "notes": "Manually verified AND gate in half-adder schematic"
+  },
+  {
+    "id": "full_adder_uha_manual_or_gate_0",
+    "image": "data/real_schematics/full_adder_using_half_adders.jpg",
+    "label": "OR",
+    "bbox": [
+      512.0,
+      104.0,
+      608.0,
+      156.0
+    ],
+    "source": "tutorialspoint.com",
+    "notes": "Manually verified OR output gate in full-adder-using-half-adders schematic"
+  },
+  {
+    "id": "half_adder_tp_gate_5",
+    "image": "data/real_schematics/half_adder_tp.jpg",
+    "label": "XOR",
+    "bbox": [
+      441.1758728027344,
+      16.51445960998535,
+      520.8922119140625,
+      79.6771240234375
+    ],
+    "source": "tutorialspoint.com",
+    "notes": "Circuit-diagram XOR gate in half-adder schematic"
+  },
+  {
+    "id": "half_adder_tp_gate_6",
+    "image": "data/real_schematics/half_adder_tp.jpg",
+    "label": "AND",
+    "bbox": [
+      470.2071838378906,
+      107.63919067382812,
+      519.202880859375,
+      150.56915283203125
+    ],
+    "source": "tutorialspoint.com",
+    "notes": "Circuit-diagram AND gate in half-adder schematic"
+  },
+  {
+    "id": "full_adder_tp_gate_6",
+    "image": "data/real_schematics/full_adder_tp.jpg",
+    "label": "AND",
+    "bbox": [
+      440.1783142089844,
+      93.36658477783203,
+      486.156005859375,
+      137.54293823242188
+    ],
+    "source": "tutorialspoint.com",
+    "notes": "Upper AND gate in full-adder circuit diagram"
+  },
+  {
+    "id": "full_adder_tp_gate_7",
+    "image": "data/real_schematics/full_adder_tp.jpg",
+    "label": "AND",
+    "bbox": [
+      440.4226379394531,
+      153.66773986816406,
+      486.4518127441406,
+      197.76199340820312
+    ],
+    "source": "tutorialspoint.com",
+    "notes": "Middle AND gate in full-adder circuit diagram"
+  },
+  {
+    "id": "full_adder_tp_gate_9",
+    "image": "data/real_schematics/full_adder_tp.jpg",
+    "label": "OR",
+    "bbox": [
+      563.8526000976562,
+      144.437255859375,
+      696.4708251953125,
+      244.25526428222656
+    ],
+    "source": "tutorialspoint.com",
+    "notes": "OR output gate in full-adder circuit diagram"
+  },
+  {
+    "id": "full_adder_tp_gate_5",
+    "image": "data/real_schematics/full_adder_tp.jpg",
+    "label": "XOR",
+    "bbox": [
+      378.0,
+      0.0,
+      562.0,
+      75.0
+    ],
+    "source": "tutorialspoint.com",
+    "notes": "Top XOR-style sum gate in the full-adder circuit diagram; visually a multi-input XOR symbol"
+  },
+  {
+    "id": "full_adder_tp_gate_8",
+    "image": "data/real_schematics/full_adder_tp.jpg",
+    "label": "AND",
+    "bbox": [
+      438.0,
+      214.0,
+      489.0,
+      262.0
+    ],
+    "source": "tutorialspoint.com",
+    "notes": "Lower AND gate in full-adder circuit diagram"
+  },
+  {
+    "id": "xnor_ansi_gate_0",
+    "image": "data/real_schematics/xnor_ansi.png",
+    "label": "XNOR",
+    "bbox": [
+      45.0,
+      5.0,
+      340.0,
+      120.0
+    ],
+    "source": "electricaltechnology.org",
+    "notes": "ANSI/Military XNOR gate symbol"
+  },
+  {
+    "id": "xnor_tp_gate_0",
+    "image": "data/real_schematics/xnor_symbol_tp.jpg",
+    "label": "XNOR",
+    "bbox": [
+      180.0,
+      10.0,
+      400.0,
+      90.0
+    ],
+    "source": "tutorialspoint.com",
+    "notes": "XNOR gate symbol with label"
+  },
+  {
+    "id": "decoder_2x4_asic_gate_0",
+    "image": "data/real_schematics/decoder_2x4_asic.png",
+    "label": "NOT",
+    "bbox": [
+      72.0,
+      14.0,
+      116.0,
+      38.0
+    ],
+    "source": "asic-world.com",
+    "notes": "Upper inverter in 2x4 decoder schematic"
+  },
+  {
+    "id": "decoder_2x4_asic_gate_1",
+    "image": "data/real_schematics/decoder_2x4_asic.png",
+    "label": "NOT",
+    "bbox": [
+      70.0,
+      32.0,
+      114.0,
+      54.0
+    ],
+    "source": "asic-world.com",
+    "notes": "Lower inverter in 2x4 decoder schematic"
+  },
+  {
+    "id": "decoder_2x4_asic_gate_2",
+    "image": "data/real_schematics/decoder_2x4_asic.png",
+    "label": "AND",
+    "bbox": [
+      188.0,
+      15.0,
+      276.0,
+      47.0
+    ],
+    "source": "asic-world.com",
+    "notes": "F0 output AND gate in 2x4 decoder schematic"
+  },
+  {
+    "id": "decoder_2x4_asic_gate_3",
+    "image": "data/real_schematics/decoder_2x4_asic.png",
+    "label": "AND",
+    "bbox": [
+      188.0,
+      52.0,
+      276.0,
+      84.0
+    ],
+    "source": "asic-world.com",
+    "notes": "F1 output AND gate in 2x4 decoder schematic"
+  },
+  {
+    "id": "decoder_2x4_asic_gate_4",
+    "image": "data/real_schematics/decoder_2x4_asic.png",
+    "label": "AND",
+    "bbox": [
+      188.0,
+      89.0,
+      276.0,
+      121.0
+    ],
+    "source": "asic-world.com",
+    "notes": "F2 output AND gate in 2x4 decoder schematic"
+  },
+  {
+    "id": "decoder_2x4_asic_gate_5",
+    "image": "data/real_schematics/decoder_2x4_asic.png",
+    "label": "AND",
+    "bbox": [
+      188.0,
+      126.0,
+      276.0,
+      160.0
+    ],
+    "source": "asic-world.com",
+    "notes": "F3 output AND gate in 2x4 decoder schematic"
+  },
+  {
+    "id": "decoder_3x8_asic_gate_0",
+    "image": "data/real_schematics/decoder_3x8_asic.png",
+    "label": "NOT",
+    "bbox": [
+      76.0,
+      2.0,
+      114.0,
+      23.0
+    ],
+    "source": "asic-world.com",
+    "notes": "Top inverter in 3x8 decoder schematic"
+  },
+  {
+    "id": "decoder_3x8_asic_gate_1",
+    "image": "data/real_schematics/decoder_3x8_asic.png",
+    "label": "NOT",
+    "bbox": [
+      76.0,
+      19.0,
+      114.0,
+      40.0
+    ],
+    "source": "asic-world.com",
+    "notes": "Middle inverter in 3x8 decoder schematic"
+  },
+  {
+    "id": "decoder_3x8_asic_gate_2",
+    "image": "data/real_schematics/decoder_3x8_asic.png",
+    "label": "NOT",
+    "bbox": [
+      76.0,
+      36.0,
+      114.0,
+      57.0
+    ],
+    "source": "asic-world.com",
+    "notes": "Bottom inverter in 3x8 decoder schematic"
+  },
+  {
+    "id": "decoder_3x8_asic_gate_3",
+    "image": "data/real_schematics/decoder_3x8_asic.png",
+    "label": "AND",
+    "bbox": [
+      188.0,
+      2.0,
+      276.0,
+      50.0
+    ],
+    "source": "asic-world.com",
+    "notes": "Top output AND gate in 3x8 decoder schematic"
+  },
+  {
+    "id": "decoder_3x8_asic_gate_4",
+    "image": "data/real_schematics/decoder_3x8_asic.png",
+    "label": "AND",
+    "bbox": [
+      188.0,
+      56.0,
+      276.0,
+      104.0
+    ],
+    "source": "asic-world.com",
+    "notes": "Second output AND gate in 3x8 decoder schematic"
+  },
+  {
+    "id": "decoder_3x8_asic_gate_5",
+    "image": "data/real_schematics/decoder_3x8_asic.png",
+    "label": "AND",
+    "bbox": [
+      188.0,
+      111.0,
+      276.0,
+      160.0
+    ],
+    "source": "asic-world.com",
+    "notes": "Third output AND gate in 3x8 decoder schematic"
+  },
+  {
+    "id": "decoder_3x8_asic_gate_6",
+    "image": "data/real_schematics/decoder_3x8_asic.png",
+    "label": "AND",
+    "bbox": [
+      188.0,
+      167.0,
+      276.0,
+      216.0
+    ],
+    "source": "asic-world.com",
+    "notes": "Fourth output AND gate in 3x8 decoder schematic"
+  },
+  {
+    "id": "decoder_3x8_asic_gate_7",
+    "image": "data/real_schematics/decoder_3x8_asic.png",
+    "label": "AND",
+    "bbox": [
+      188.0,
+      223.0,
+      276.0,
+      273.0
+    ],
+    "source": "asic-world.com",
+    "notes": "Fifth output AND gate in 3x8 decoder schematic"
+  },
+  {
+    "id": "decoder_3x8_asic_gate_8",
+    "image": "data/real_schematics/decoder_3x8_asic.png",
+    "label": "AND",
+    "bbox": [
+      188.0,
+      279.0,
+      276.0,
+      329.0
+    ],
+    "source": "asic-world.com",
+    "notes": "Sixth output AND gate in 3x8 decoder schematic"
+  },
+  {
+    "id": "decoder_3x8_asic_gate_9",
+    "image": "data/real_schematics/decoder_3x8_asic.png",
+    "label": "AND",
+    "bbox": [
+      188.0,
+      336.0,
+      276.0,
+      386.0
+    ],
+    "source": "asic-world.com",
+    "notes": "Seventh output AND gate in 3x8 decoder schematic"
+  },
+  {
+    "id": "decoder_3x8_asic_gate_10",
+    "image": "data/real_schematics/decoder_3x8_asic.png",
+    "label": "AND",
+    "bbox": [
+      188.0,
+      393.0,
+      276.0,
+      446.0
+    ],
+    "source": "asic-world.com",
+    "notes": "Bottom output AND gate in 3x8 decoder schematic"
+  }
+]
