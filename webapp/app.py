@@ -245,19 +245,21 @@ async def analyze_sample(request: Request) -> HTMLResponse:
     form = await request.form()
     sample_slug = str(form.get("sample", "")).strip()
     requested_mode = str(form.get("mode", "fixture")).strip() or "fixture"
+    template_version = str(form.get("template", "")).strip()
+    template_name = "index_v2.html" if template_version == "v2" else "index.html"
     sample = next((item for item in SAMPLE_FIXTURES + SAMPLE_SYMBOLS if item["slug"] == sample_slug), None)
     if sample is None:
         context["error"] = f"Unknown sample: {sample_slug or 'missing'}"
-        return templates.TemplateResponse(request, "index.html", context, status_code=400)
+        return templates.TemplateResponse(request, template_name, context, status_code=400)
 
     try:
         sample_mode = sample.get("mode", requested_mode if requested_mode in {"fixture", "symbol_beta"} else "fixture")
         context["selected_mode"] = sample_mode
         context.update(_run_analysis(sample["path"], mode=sample_mode))
-        return templates.TemplateResponse(request, "index.html", context)
+        return templates.TemplateResponse(request, template_name, context)
     except Exception as exc:
         context["error"] = str(exc)
-        return templates.TemplateResponse(request, "index.html", context, status_code=500)
+        return templates.TemplateResponse(request, template_name, context, status_code=500)
 
 
 @app.post("/analyze", response_class=HTMLResponse)
@@ -265,17 +267,19 @@ async def analyze(request: Request, image: UploadFile = File(...)) -> HTMLRespon
     context = _empty_context(request)
     form = await request.form()
     requested_mode = str(form.get("mode", "fixture")).strip() or "fixture"
+    template_version = str(form.get("template", "")).strip()
+    template_name = "index_v2.html" if template_version == "v2" else "index.html"
     if requested_mode not in {"fixture", "symbol_beta"}:
         requested_mode = "fixture"
     context["selected_mode"] = requested_mode
     if not image.filename:
         context["error"] = "No file was provided."
-        return templates.TemplateResponse(request, "index.html", context, status_code=400)
+        return templates.TemplateResponse(request, template_name, context, status_code=400)
 
     suffix = Path(image.filename).suffix.lower()
     if suffix not in SUPPORTED_SUFFIXES:
         context["error"] = f"Unsupported file type: {suffix or 'unknown'}"
-        return templates.TemplateResponse(request, "index.html", context, status_code=400)
+        return templates.TemplateResponse(request, template_name, context, status_code=400)
 
     TMP_DIR.mkdir(parents=True, exist_ok=True)
     upload_path = TMP_DIR / _normalize_filename(image.filename)
@@ -284,10 +288,10 @@ async def analyze(request: Request, image: UploadFile = File(...)) -> HTMLRespon
         with upload_path.open("wb") as output:
             shutil.copyfileobj(image.file, output)
         context.update(_run_analysis(upload_path, mode=requested_mode))
-        return templates.TemplateResponse(request, "index.html", context)
+        return templates.TemplateResponse(request, template_name, context)
     except Exception as exc:
         context["error"] = str(exc)
-        return templates.TemplateResponse(request, "index.html", context, status_code=500)
+        return templates.TemplateResponse(request, template_name, context, status_code=500)
     finally:
         image.file.close()
         upload_path.unlink(missing_ok=True)

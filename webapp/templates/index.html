@@ -3,29 +3,28 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Circuit Classifier Demo</title>
+    <title>Circuit Classifier</title>
     <link rel="stylesheet" href="/static/style.css" />
   </head>
   <body>
     <main class="page">
-      <section class="hero">
+      <header class="hero">
         <p class="eyebrow">Circuit Classifier</p>
-        <h1>Analyze clean logic schematics in stable and beta modes.</h1>
+        <h1>Logic schematic analysis demo</h1>
         <p class="lede">
-          The stable demo supports the fixture-style pipeline for
-          <strong>{{ ", ".join(supported_circuits) }}</strong>.
-          A separate symbol-style beta path is now exposed for clean real gate drawings, but it is still experimental.
+          Stable support for fixture-style schematics: <strong>{{ ", ".join(supported_circuits) }}</strong>.
+          Experimental symbol-style beta available for real gate drawings.
         </p>
-      </section>
+      </header>
 
-      <section class="panel upload-panel">
+      <section class="panel">
         <form action="/analyze" method="post" enctype="multipart/form-data" class="upload-form">
-          <label class="file-input">
-            <span>Choose schematic image</span>
+                    <label class="file-input">
+            <span>Schematic image</span>
             <input type="file" name="image" accept=".png,.jpg,.jpeg,.webp,.avif,.gif" required />
           </label>
           <label class="mode-input">
-            <span>Analysis mode</span>
+            <span>Mode</span>
             <select name="mode">
               {% for mode in analysis_modes %}
               <option value="{{ mode.value }}" {% if selected_mode == mode.value %}selected{% endif %}>
@@ -37,7 +36,7 @@
           <button type="submit">Analyze</button>
         </form>
         <p class="hint">
-          `Fixture Demo` is the stable shipped path. `Symbol Beta` is intended for clean symbol-style gate drawings and still has a narrower success envelope.
+          Fixture Demo is the stable path. Symbol Beta targets real gate drawings with a narrower success envelope.
         </p>
         <div class="status-grid">
           <article class="status-card stable">
@@ -71,24 +70,22 @@
         </div>
       </section>
 
-      <section class="panel samples-panel">
+      <section class="panel">
         <div class="samples-header">
-          <div>
-            <h2>Try Fixture Samples</h2>
-            <p class="hint">Use a known-good fixture without uploading anything.</p>
-          </div>
+          <h2>Fixture Samples</h2>
+          <p class="hint">Test with known-good fixture schematics.</p>
         </div>
         <div class="sample-grid">
           {% for sample in sample_fixtures %}
           <article class="sample-card">
-            <img src="{{ sample.image_url }}" alt="{{ sample.label }} sample" />
+            <img src="{{ sample.image_url }}" alt="{{ sample.label }}" />
             <div class="sample-body">
               <h3>{{ sample.label }}</h3>
               <p>{{ sample.description }}</p>
               <form action="/analyze/sample" method="post">
                 <input type="hidden" name="sample" value="{{ sample.slug }}" />
                 <input type="hidden" name="mode" value="fixture" />
-                <button type="submit">Analyze Sample</button>
+                                <button type="submit">Analyze</button>
               </form>
             </div>
           </article>
@@ -96,24 +93,22 @@
         </div>
       </section>
 
-      <section class="panel samples-panel">
+      <section class="panel">
         <div class="samples-header">
-          <div>
-            <h2>Try Supported Symbol Beta Cases</h2>
-            <p class="hint">These are the current promoted real symbol-style examples behind the beta path.</p>
-          </div>
+          <h2>Symbol Beta Samples</h2>
+          <p class="hint">Supported real symbol-style schematics for the beta path.</p>
         </div>
         <div class="sample-grid">
           {% for sample in sample_symbols %}
-          <article class="sample-card symbol-card">
-            <img src="{{ sample.image_url }}" alt="{{ sample.label }} symbol sample" />
+          <article class="sample-card">
+            <img src="{{ sample.image_url }}" alt="{{ sample.label }}" />
             <div class="sample-body">
               <h3>{{ sample.label }}</h3>
               <p>{{ sample.description }}</p>
               <form action="/analyze/sample" method="post">
                 <input type="hidden" name="sample" value="{{ sample.slug }}" />
                 <input type="hidden" name="mode" value="symbol_beta" />
-                <button type="submit">Analyze In Symbol Beta</button>
+                                <button type="submit">Analyze</button>
               </form>
             </div>
           </article>
@@ -123,7 +118,7 @@
 
       {% if error %}
       <section class="panel error-panel">
-        <h2>Analysis Failed</h2>
+        <h2>Error</h2>
         <p>{{ error }}</p>
       </section>
       {% endif %}
@@ -136,7 +131,7 @@
           <p class="meta">Mode: <code>{{ result.mode }}</code></p>
           {% if result.mode == "symbol_beta" %}
           <p class="beta-note">
-            Symbol Beta is limited to the current supported symbol-style benchmark envelope. Unknown results should be treated as unsupported, not definitive failures of the uploaded circuit.
+            Symbol Beta is limited to the current supported benchmark envelope. Unknown results indicate unsupported input, not necessarily incorrect circuits.
           </p>
           {% endif %}
           <p class="label">{{ result.classification.label }}</p>
@@ -165,7 +160,7 @@
         <section class="panel detections-panel">
           <h2>Detected Gates</h2>
           {% if result.selected_gate_ids %}
-          <p class="meta">Selected proposal set: <code>{{ ", ".join(result.selected_gate_ids) }}</code></p>
+          <p class="meta">Selected: <code>{{ ", ".join(result.selected_gate_ids) }}</code></p>
           {% endif %}
           <ul class="plain-list">
             {% for gate in result.gates %}
@@ -179,14 +174,16 @@
         </section>
       </section>
 
-      <section class="results-grid visuals-grid">
+      <section class="results-grid">
         <section class="panel image-panel">
           <h2>Overlay</h2>
-          <img src="{{ result.analysis_image_url }}" alt="Analysis overlay" />
+          <img src="{{ result.analysis_image_url }}" alt="Analysis overlay" onclick="openLightbox(this)" />
+          <span class="enlarge-hint">Click to enlarge</span>
         </section>
         <section class="panel image-panel">
           <h2>Debug View</h2>
-          <img src="{{ result.debug_image_url }}" alt="Debug visualization" />
+          <img src="{{ result.debug_image_url }}" alt="Debug visualization" onclick="openLightbox(this)" />
+          <span class="enlarge-hint">Click to enlarge</span>
         </section>
       </section>
 
@@ -219,10 +216,38 @@
 
       <footer class="footer-note">
         <p>
-          Stable scope: clean fixture-style schematics for
-          <strong>{{ ", ".join(supported_circuits) }}</strong>. Symbol-style beta mode is available for clean gate-drawing schematics, but it remains experimental and narrower in scope.
+          Stable: fixture-style schematics for <strong>{{ ", ".join(supported_circuits) }}</strong>.
+          Symbol Beta: experimental support for real gate drawings.
         </p>
       </footer>
     </main>
+
+    <!-- Lightbox modal -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+      <span class="lightbox-close">&times;</span>
+      <img id="lightbox-img" src="" alt="Enlarged view" />
+    </div>
+
+    <script>
+      function openLightbox(img) {
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        lightboxImg.src = img.src;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeLightbox() {
+        const lightbox = document.getElementById('lightbox');
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          closeLightbox();
+        }
+      });
+    </script>
   </body>
 </html>
